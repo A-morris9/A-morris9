@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,14 +8,21 @@ import java.util.Scanner;
 
 public class SuggestionGenerator {
     List<String> suggestions = new ArrayList<>();
+    public static List<String> history = new ArrayList<>();
     UserInterface ui = new UserInterface();
     Random random = new Random();
-    public int size;
-    public int listLength;
-    public int rand;
+    static String choice;
+    public int listLength, rand;
+    public static String getChoice() {
+        return choice;
+    }
+    public static List<String> getHistory() {
+        return history;
+    }
     public SuggestionGenerator() {
         fillSuggestions();
-      listLength = suggestions.size();
+      listLength = suggestions.size() + 1;
+
     }
 
     private void fillSuggestions() {
@@ -45,26 +53,23 @@ public class SuggestionGenerator {
             if (userChoice.equals("1")) {
                 randomNumber();
                 pullSuggestion();
+
             } else if (userChoice.equals("2")) {
-                System.out.println("                                ");
-                System.out.println("================================");
-                System.out.println("===========And Scene!===========");
-                System.out.println("================================");
+                ui.displayHistory();
+
+            }else if (userChoice.equals("3")) {
+                ui.displayEnd();
                 break;
             } else {
                 ui.displayInvalidInput();
             }
         }
-
-
     }
 
     private void pullSuggestion() {
-        String choice = suggestions.get(this.rand);
-        System.out.println("                    ");
-        System.out.println("================================");
-        System.out.println("Your suggestion is " + choice);
-        System.out.println("================================");
+        choice = suggestions.get(this.rand);
+        ui.displaySuggestion();
+        fillHistory();
     }
 
     private void randomNumber() {
@@ -73,5 +78,8 @@ public class SuggestionGenerator {
             this.rand = random.nextInt(listLength);
             if(this.rand !=0) break;
         }
+    }
+    private void fillHistory() {
+        history.add(choice);
     }
 }
