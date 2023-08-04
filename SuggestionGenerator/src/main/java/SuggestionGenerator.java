@@ -21,7 +21,7 @@ public class SuggestionGenerator {
     }
     public SuggestionGenerator() {
         fillSuggestions();
-      listLength = suggestions.size() + 1;
+      listLength = suggestions.size();
 
     }
 

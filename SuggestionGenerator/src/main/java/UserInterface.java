@@ -18,23 +18,23 @@ public class UserInterface {
     }
 
     public void displayInvalidInput() {
-            System.out.println("                                 ");
-            System.out.println("Invalid choice! Please try again!");
-        }
+        System.out.println("                                 ");
+        System.out.println("Invalid choice! Please try again!");
+    }
 
     public void displaySuggestion() {
-      System.out.println("                                ");
-      System.out.println("================================");
-      System.out.println("Your Suggestion Is " + SuggestionGenerator.getChoice());
-      System.out.println("================================");
-     }
+        System.out.println("                                ");
+        System.out.println("================================");
+        System.out.println("Your Suggestion Is " + SuggestionGenerator.getChoice());
+        System.out.println("================================");
+    }
 
     public void displayHistory() {
         System.out.println("                                ");
-       for (String str : SuggestionGenerator.getHistory()) {
-           System.out.println(str);
-       }
+        for (String str : SuggestionGenerator.getHistory()) {
+            System.out.println(str);
         }
+    }
 
     public void displayEnd() {
         System.out.println("                                ");
@@ -43,3 +43,4 @@ public class UserInterface {
         System.out.println("================================");
     }
 }
+
